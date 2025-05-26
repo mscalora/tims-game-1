@@ -3,6 +3,41 @@ namespace myImages {
 
     helpers._registerFactory("image", function(name: string) {
         switch(helpers.stringTrim(name)) {
+            case "image1":
+            case "Steve":return img`
+....eeeeeeee....
+....eeeeeeee....
+....edddddde....
+....dddddddd....
+....d18dd81d....
+....dddeeddd....
+....ddeddedd....
+....ddeeeedd....
+666666dddd666666
+6666666dd6666666
+6666666666666666
+6666666666666666
+6666666666666666
+6666666666666666
+dddd66666666dddd
+dddd66666666dddd
+dddd66666666dddd
+dddd66666666dddd
+dddd66666666dddd
+dddd68888866dddd
+dddd88888886dddd
+eded88888888dede
+....88888888....
+....88888888....
+....88888888....
+....88888888....
+....88888888....
+....88888888....
+....88888888....
+....88888888....
+....bcbcbcbc....
+....cbcbcbcb....
+`;
             case "image3":
             case "Door":return img`
 eeeeeeeeeeeeeeee
@@ -37,6 +72,25 @@ eeeeeeeeeeeeeeee
 eeeeeeeeeeeeeeee
 eeeeeeeeeeeeeeee
 eeeeeeeeeeeeeeee
+`;
+            case "image7":
+            case "myImage3":return img`
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 . e e e e e e e e e e e . . 1 
+1 . e e . . . e . . . e e . . 1 
+1 . e e . . . e . . . e e . . 1 
+1 . e e . . . e . . . e e . . 1 
+1 . e e e e e e e e e e e . . 1 
+1 . e e . . . e . . . e e . . 1 
+1 . e e . . . e . . . e e . . 1 
+1 . e e . . . e . . . e e . . 1 
+1 . e e e e e e e e e e e . . 1 
+1 . e e e e e e e e e e e . . 1 
+1 . e e e e e e e e d d e . . 1 
+1 . e e e e e e e e e e e . . 1 
+1 . e e e e e e e e e e e . . 1 
+1 . e e e e e e e e e e e . . 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
 `;
             case "image8":
             case "myImage4":return img`
@@ -131,114 +185,6 @@ eeeeeeeeeeeeeeee
 1 e b e e e e e e e e c e e e 1 
 1 e e e e e e e e e e e e e e 1 
 1 e e e c e e e e e e e e e e 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
-`;
-            case "image7":
-            case "myImage3":return img`
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
-1 . 4 4 4 4 4 4 4 4 4 4 4 . . 1 
-1 . 4 4 . . . 4 . . . 4 4 . . 1 
-1 . 4 4 . . . 4 . . . 4 4 . . 1 
-1 . 4 4 . . . 4 . . . 4 4 . . 1 
-1 . 4 4 4 4 4 4 4 4 4 4 4 . . 1 
-1 . 4 4 . . . 4 . . . 4 4 . . 1 
-1 . 4 4 . . . 4 . . . 4 4 . . 1 
-1 . 4 4 . . . 4 . . . 4 4 . . 1 
-1 . 4 4 4 4 4 4 4 4 4 4 4 . . 1 
-1 . 4 4 4 4 4 4 4 4 4 4 4 . . 1 
-1 . 4 4 4 4 4 4 4 4 c c c . . 1 
-1 . 4 4 4 4 4 4 4 4 c 4 4 . . 1 
-1 . 4 4 4 4 4 4 4 4 4 4 4 . . 1 
-1 . 4 4 4 4 4 4 4 4 4 4 4 . . 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
-`;
-            case "image1":
-            case "Steve":return img`
-....eeeeeeee....
-....eeeeeeee....
-....edddddde....
-....dddddddd....
-....d18dd81d....
-....dddeeddd....
-....ddeddedd....
-....ddeeeedd....
-666666dddd666666
-6666666dd6666666
-6666666666666666
-6666666666666666
-6666666666666666
-6666666666666666
-dddd66666666dddd
-dddd66666666dddd
-dddd66666666dddd
-dddd66666666dddd
-dddd66666666dddd
-dddd68888866dddd
-dddd88888886dddd
-eded88888888dede
-....88888888....
-....88888888....
-....88888888....
-....88888888....
-....88888888....
-....88888888....
-....88888888....
-....88888888....
-....bcbcbcbc....
-....cbcbcbcb....
-`;
-            case "image9":
-            case "Steve0":return img`
-................
-................
-....eeeeeeee....
-....eeeeeeee....
-....edddddde....
-....dddddddd....
-....d18dd81d....
-....dddeeddd....
-....ddeddedd....
-....ddeeeedd....
-666666dddd666666
-6666666dd6666666
-6666666666666666
-6666666666666666
-6666666666666666
-6666666666666666
-dddd66666666dddd
-dddd66666666dddd
-dddd66666666dddd
-dddd66666666dddd
-dddd66666666dddd
-dddd68888866dddd
-dddd88888886dddd
-eded88888888dede
-....88888888....
-....88888888....
-....88888888....
-....88888888....
-....88888888....
-....88888888....
-....bcbcbcbc....
-....cbcbcbcb....
-`;
-            case "image10":
-            case "myImage5":return img`
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
-1 4 4 4 4 4 e e e e 4 4 4 4 4 1 
-1 4 4 4 4 4 4 e e 4 4 4 e e e 1 
-1 4 4 4 4 4 4 e e 4 4 4 e 4 e 1 
-1 4 4 e 4 4 4 e e 4 4 4 e e e 1 
-1 4 4 e 4 4 4 e e 4 4 4 d d d 1 
-1 4 4 e 4 4 4 e e 4 4 4 d d d 1 
-1 4 4 e 4 4 4 e e 4 4 4 d d d 1 
-1 4 d d d 4 4 e e 4 4 4 4 d d 1 
-1 4 d d d 4 4 e e 4 4 4 4 d d 1 
-1 4 4 4 4 4 4 e e 4 4 4 4 4 d 1 
-1 4 4 4 4 4 4 e e 4 4 4 4 4 d 1 
-1 4 4 4 4 4 4 e e 4 4 4 4 4 4 1 
-1 4 4 4 4 4 4 e e 4 4 4 4 4 4 1 
-1 4 4 4 4 4 4 e e 4 4 4 4 4 4 1 
 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
 `;
         }

@@ -19,7 +19,7 @@ controller.up.on_event(ControllerButtonEvent.PRESSED, on_up_pressed)
 def on_b_pressed():
     global mySprite3
     if _10 == 1:
-        if info.score() == 6:
+        if info.score() == 5:
             info.set_score(1)
         elif info.score() == 1:
             info.set_score(2)
@@ -29,50 +29,49 @@ def on_b_pressed():
             info.set_score(4)
         elif info.score() == 4:
             info.set_score(5)
+    else:
+        if info.score() == 1:
+            tiles.set_tile_at(tiles.get_tile_location(mySprite2.tilemap_location().column,
+                    mySprite2.tilemap_location().row),
+                assets.tile("""
+                    myTile3
+                    """))
+            tiles.set_wall_at(tiles.get_tile_location(mySprite2.tilemap_location().column,
+                    mySprite2.tilemap_location().row),
+                True)
+        elif info.score() == 2:
+            tiles.set_tile_at(tiles.get_tile_location(mySprite2.tilemap_location().column,
+                    mySprite2.tilemap_location().row),
+                assets.tile("""
+                    myTile6
+                    """))
+            tiles.set_wall_at(tiles.get_tile_location(mySprite2.tilemap_location().column,
+                    mySprite2.tilemap_location().row),
+                True)
+        elif info.score() == 4:
+            mySprite3 = sprites.create(assets.image("""
+                Door
+                """), SpriteKind.wall2)
+            mySprite3.set_stay_in_screen(False)
+            mySprite3.set_position(mySprite2.x, mySprite2.y - 8)
+        elif info.score() == 3:
+            tiles.set_tile_at(tiles.get_tile_location(mySprite2.tilemap_location().column,
+                    mySprite2.tilemap_location().row),
+                assets.tile("""
+                    Planks
+                    """))
+            tiles.set_wall_at(tiles.get_tile_location(mySprite2.tilemap_location().column,
+                    mySprite2.tilemap_location().row),
+                True)
         elif info.score() == 5:
-            info.set_score(6)
-    elif info.score() == 1:
-        tiles.set_tile_at(tiles.get_tile_location(mySprite2.tilemap_location().column,
-                mySprite2.tilemap_location().row),
-            assets.tile("""
-                myTile3
-                """))
-        tiles.set_wall_at(tiles.get_tile_location(mySprite2.tilemap_location().column,
-                mySprite2.tilemap_location().row),
-            True)
-    elif info.score() == 2:
-        tiles.set_tile_at(tiles.get_tile_location(mySprite2.tilemap_location().column,
-                mySprite2.tilemap_location().row),
-            assets.tile("""
-                myTile6
-                """))
-        tiles.set_wall_at(tiles.get_tile_location(mySprite2.tilemap_location().column,
-                mySprite2.tilemap_location().row),
-            True)
-    elif info.score() == 4:
-        mySprite3 = sprites.create(assets.image("""
-            Door
-            """), SpriteKind.wall2)
-        mySprite3.set_stay_in_screen(False)
-        mySprite3.set_position(mySprite2.x, mySprite2.y - 8)
-    elif info.score() == 3:
-        tiles.set_tile_at(tiles.get_tile_location(mySprite2.tilemap_location().column,
-                mySprite2.tilemap_location().row),
-            assets.tile("""
-                Planks
-                """))
-        tiles.set_wall_at(tiles.get_tile_location(mySprite2.tilemap_location().column,
-                mySprite2.tilemap_location().row),
-            True)
-    elif info.score() == 5:
-        tiles.set_tile_at(tiles.get_tile_location(mySprite2.tilemap_location().column,
-                mySprite2.tilemap_location().row),
-            assets.tile("""
-                Bedrock
-                """))
-        tiles.set_wall_at(tiles.get_tile_location(mySprite2.tilemap_location().column,
-                mySprite2.tilemap_location().row),
-            True)
+            tiles.set_tile_at(tiles.get_tile_location(mySprite2.tilemap_location().column,
+                    mySprite2.tilemap_location().row),
+                assets.tile("""
+                    Bedrock
+                    """))
+            tiles.set_wall_at(tiles.get_tile_location(mySprite2.tilemap_location().column,
+                    mySprite2.tilemap_location().row),
+                True)
 controller.B.on_event(ControllerButtonEvent.PRESSED, on_b_pressed)
 
 def on_a_pressed():
@@ -170,9 +169,9 @@ row = 0
 mySprite2: Sprite = None
 y1 = 0
 mySprite3: Sprite = None
-_10 = 0
 y = 0
 mySprite: Sprite = None
+_10 = 0
 mySprite = sprites.create(assets.image("""
     Steve
     """), SpriteKind.player)
@@ -366,9 +365,7 @@ def on_forever2():
         else:
             animation.stop_animation(animation.AnimationTypes.ALL, mySprite5)
             mySprite5.set_velocity(0, 50)
-            mySprite5.set_image(assets.image("""
-                myImage4
-                """))
+            mySprite5.set_image(assets.image("""myImage4"""))
         pause(2000)
     else:
         mySprite5.set_velocity(0, 50)
@@ -398,8 +395,6 @@ def on_forever3():
         mySprite4.set_image(assets.image("""
             myImage2
             """))
-    elif info.score() == 6:
-        pass
 forever(on_forever3)
 
 def on_forever4():
@@ -408,8 +403,9 @@ def on_forever4():
             mySprite5.y += -16
         else:
             mySprite5.set_velocity(-50, 50)
-    elif mySprite5.is_hitting_tile(CollisionDirection.LEFT) or mySprite5.is_hitting_tile(CollisionDirection.RIGHT):
-        mySprite5.y += -16
     else:
-        mySprite5.set_velocity(50, 50)
+        if mySprite5.is_hitting_tile(CollisionDirection.LEFT) or mySprite5.is_hitting_tile(CollisionDirection.RIGHT):
+            mySprite5.y += -16
+        else:
+            mySprite5.set_velocity(50, 50)
 forever(on_forever4)
