@@ -4,23 +4,18 @@ namespace SpriteKind {
     export const wall2 = SpriteKind.create()
     export const mod = SpriteKind.create()
 }
-
-controller.up.onEvent(ControllerButtonEvent.Pressed, function on_up_pressed() {
-    
+controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
     if (_10 == 1) {
         if (mySprite.isHittingTile(CollisionDirection.Bottom)) {
             y = -100
             pause(400)
             y = 100
         }
-        
     } else {
         y1 += -16
     }
-    
 })
-controller.B.onEvent(ControllerButtonEvent.Pressed, function on_b_pressed() {
-    
+controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
     if (_10 == 1) {
         if (info.score() == 5) {
             info.setScore(1)
@@ -33,113 +28,87 @@ controller.B.onEvent(ControllerButtonEvent.Pressed, function on_b_pressed() {
         } else if (info.score() == 4) {
             info.setScore(5)
         }
-        
     } else if (info.score() == 1) {
-        tiles.setTileAt(tiles.getTileLocation(mySprite2.tilemapLocation().column, mySprite2.tilemapLocation().row), assets.tile`
-                    myTile3
-                    `)
+        tiles.setTileAt(tiles.getTileLocation(mySprite2.tilemapLocation().column, mySprite2.tilemapLocation().row), assets.tile`myTile3`)
         tiles.setWallAt(tiles.getTileLocation(mySprite2.tilemapLocation().column, mySprite2.tilemapLocation().row), true)
     } else if (info.score() == 2) {
-        tiles.setTileAt(tiles.getTileLocation(mySprite2.tilemapLocation().column, mySprite2.tilemapLocation().row), assets.tile`
-                    myTile6
-                    `)
+        tiles.setTileAt(tiles.getTileLocation(mySprite2.tilemapLocation().column, mySprite2.tilemapLocation().row), assets.tile`myTile6`)
         tiles.setWallAt(tiles.getTileLocation(mySprite2.tilemapLocation().column, mySprite2.tilemapLocation().row), true)
     } else if (info.score() == 4) {
-        mySprite3 = sprites.create(assets.image`
-                Door
-                `, SpriteKind.wall2)
+        mySprite3 = sprites.create(assets.image`Door`, SpriteKind.wall2)
         mySprite3.setStayInScreen(false)
         mySprite3.setPosition(mySprite2.x, mySprite2.y - 8)
     } else if (info.score() == 3) {
-        tiles.setTileAt(tiles.getTileLocation(mySprite2.tilemapLocation().column, mySprite2.tilemapLocation().row), assets.tile`
-                    Planks
-                    `)
+        tiles.setTileAt(tiles.getTileLocation(mySprite2.tilemapLocation().column, mySprite2.tilemapLocation().row), assets.tile`Planks`)
         tiles.setWallAt(tiles.getTileLocation(mySprite2.tilemapLocation().column, mySprite2.tilemapLocation().row), true)
     } else if (info.score() == 5) {
-        tiles.setTileAt(tiles.getTileLocation(mySprite2.tilemapLocation().column, mySprite2.tilemapLocation().row), assets.tile`
-                    Bedrock
-                    `)
+        tiles.setTileAt(tiles.getTileLocation(mySprite2.tilemapLocation().column, mySprite2.tilemapLocation().row), assets.tile`Bedrock`)
         tiles.setWallAt(tiles.getTileLocation(mySprite2.tilemapLocation().column, mySprite2.tilemapLocation().row), true)
     }
-    
 })
-controller.A.onEvent(ControllerButtonEvent.Pressed, function on_a_pressed() {
-    
+controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     if (_10 == 1) {
-        
+    	
     } else {
         row = 0
         tiles.setWallAt(tiles.getTileLocation(mySprite2.tilemapLocation().column, mySprite2.tilemapLocation().row), false)
-        tiles.setTileAt(tiles.getTileLocation(mySprite2.tilemapLocation().column, mySprite2.tilemapLocation().row), assets.tile`
-                myTile0
-                `)
+        tiles.setTileAt(tiles.getTileLocation(mySprite2.tilemapLocation().column, mySprite2.tilemapLocation().row), assets.tile`myTile0`)
         if (mySprite2.overlapsWith(mySprite3)) {
             sprites.destroy(mySprite3)
             sprites.destroyAllSpritesOfKind(SpriteKind.wall2)
         }
-        
         mySprite2.startEffect(effects.confetti)
         pause(500)
         effects.clearParticles(mySprite2)
     }
-    
 })
-controller.left.onEvent(ControllerButtonEvent.Pressed, function on_left_pressed() {
-    
+controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
     if (_10 == 1) {
         x = -50
     } else {
         x1 += -16
     }
-    
 })
-controller.right.onEvent(ControllerButtonEvent.Released, function on_right_released() {
-    
+controller.right.onEvent(ControllerButtonEvent.Released, function () {
     x = 0
 })
-controller.left.onEvent(ControllerButtonEvent.Released, function on_left_released() {
-    
+controller.left.onEvent(ControllerButtonEvent.Released, function () {
     x = 0
 })
-controller.right.onEvent(ControllerButtonEvent.Pressed, function on_right_pressed() {
-    
+controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
     if (_10 == 1) {
         x = 50
     } else {
         x1 += 16
     }
-    
 })
-controller.down.onEvent(ControllerButtonEvent.Pressed, function on_down_pressed() {
-    
+controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
     if (_10 == 1) {
-        
+    	
     } else {
         y1 += 16
     }
-    
 })
-controller.menu.onEvent(ControllerButtonEvent.Pressed, function on_menu_pressed() {
-    
+controller.menu.onEvent(ControllerButtonEvent.Pressed, function () {
     if (_10 == 1) {
         mySprite2 = sprites.create(img`
-                f f f f f f f f f f f f f f f f
-                f . . . . . . . . . . . . . . f
-                f . . . . . . . . . . . . . . f
-                f . . . . . . . . . . . . . . f
-                f . . . . . . . . . . . . . . f
-                f . . . . . . . . . . . . . . f
-                f . . . . . . . . . . . . . . f
-                f . . . . . . . . . . . . . . f
-                f . . . . . . . . . . . . . . f
-                f . . . . . . . . . . . . . . f
-                f . . . . . . . . . . . . . . f
-                f . . . . . . . . . . . . . . f
-                f . . . . . . . . . . . . . . f
-                f . . . . . . . . . . . . . . f
-                f . . . . . . . . . . . . . . f
-                f f f f f f f f f f f f f f f f
-                `, SpriteKind.crser)
+            f f f f f f f f f f f f f f f f 
+            f . . . . . . . . . . . . . . f 
+            f . . . . . . . . . . . . . . f 
+            f . . . . . . . . . . . . . . f 
+            f . . . . . . . . . . . . . . f 
+            f . . . . . . . . . . . . . . f 
+            f . . . . . . . . . . . . . . f 
+            f . . . . . . . . . . . . . . f 
+            f . . . . . . . . . . . . . . f 
+            f . . . . . . . . . . . . . . f 
+            f . . . . . . . . . . . . . . f 
+            f . . . . . . . . . . . . . . f 
+            f . . . . . . . . . . . . . . f 
+            f . . . . . . . . . . . . . . f 
+            f . . . . . . . . . . . . . . f 
+            f f f f f f f f f f f f f f f f 
+            `, SpriteKind.crser)
         mySprite2.setPosition(mySprite.x, mySprite.y - 8)
         mySprite2.setStayInScreen(true)
         y1 = mySprite.y - 8
@@ -149,21 +118,18 @@ controller.menu.onEvent(ControllerButtonEvent.Pressed, function on_menu_pressed(
         sprites.destroy(mySprite2)
         _10 = 1
     }
-    
 })
 let cx = 0
 let x1 = 0
 let x = 0
 let row = 0
-let mySprite2 : Sprite = null
+let mySprite2: Sprite = null
 let y1 = 0
-let mySprite3 : Sprite = null
-let y = 0
-let mySprite : Sprite = null
+let mySprite3: Sprite = null
 let _10 = 0
-mySprite = sprites.create(assets.image`
-    Steve
-    `, SpriteKind.Player)
+let y = 0
+let mySprite: Sprite = null
+mySprite = sprites.create(assets.image`Steve`, SpriteKind.Player)
 scene.setBackgroundImage(img`
     9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999
     9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999
@@ -286,115 +252,111 @@ scene.setBackgroundImage(img`
     9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999
     9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999
     `)
-tiles.setCurrentTilemap(tilemap`
-    level
-    `)
+tiles.setCurrentTilemap(tilemap`level`)
 scene.cameraFollowSprite(mySprite)
-let mySprite4 = sprites.create(assets.image`
-    myImage
-    `, SpriteKind.Player)
+let mySprite4 = sprites.create(assets.image`myImage`, SpriteKind.Player)
 mySprite4.setStayInScreen(true)
 mySprite4.setVelocity(100, 100)
 y = 100
 _10 = 1
 info.setScore(1)
 mySprite3 = sprites.create(img`
-        a a a a a a a a f f f f f f f f
-        a a a a a a a a f f f f f f f f
-        a a a a a a a a f f f f f f f f
-        a a a a a a a a f f f f f f f f
-        a a a a a a a a f f f f f f f f
-        a a a a a a a a f f f f f f f f
-        a a a a a a a a f f f f f f f f
-        a a a a a a a a f f f f f f f f
-        f f f f f f f f a a a a a a a a
-        f f f f f f f f a a a a a a a a
-        f f f f f f f f a a a a a a a a
-        f f f f f f f f a a a a a a a a
-        f f f f f f f f a a a a a a a a
-        f f f f f f f f a a a a a a a a
-        f f f f f f f f a a a a a a a a
-        f f f f f f f f a a a a a a a a
-        `, SpriteKind.Player)
+    a a a a a a a a f f f f f f f f 
+    a a a a a a a a f f f f f f f f 
+    a a a a a a a a f f f f f f f f 
+    a a a a a a a a f f f f f f f f 
+    a a a a a a a a f f f f f f f f 
+    a a a a a a a a f f f f f f f f 
+    a a a a a a a a f f f f f f f f 
+    a a a a a a a a f f f f f f f f 
+    f f f f f f f f a a a a a a a a 
+    f f f f f f f f a a a a a a a a 
+    f f f f f f f f a a a a a a a a 
+    f f f f f f f f a a a a a a a a 
+    f f f f f f f f a a a a a a a a 
+    f f f f f f f f a a a a a a a a 
+    f f f f f f f f a a a a a a a a 
+    f f f f f f f f a a a a a a a a 
+    `, SpriteKind.Player)
 sprites.destroy(mySprite3)
-let mySprite5 = sprites.create(assets.image`
-    myImage4
-    `, SpriteKind.mod)
+let mySprite5 = sprites.create(assets.image`myImage4`, SpriteKind.mod)
 mySprite5.setPosition(125, 80)
 mySprite5.setVelocity(0, 50)
 mySprite5.setStayInScreen(false)
-forever(function on_forever() {
-    if (_10 == 0) {
-        mySprite2.setPosition(x1, y1)
-        grid.snap(mySprite2)
-    }
-    
-})
-forever(function on_forever2() {
-    
+tiles.placeOnRandomTile(mySprite, assets.tile`myTile7`)
+mySprite.y += -8
+tiles.placeOnRandomTile(mySprite5, assets.tile`myTile8`)
+mySprite4.y += -8
+forever(function () {
     if (mySprite5.isHittingTile(CollisionDirection.Bottom)) {
         cx = randint(1, 3)
         if (cx == 1) {
             animation.stopAnimation(animation.AnimationTypes.All, mySprite5)
-            animation.runImageAnimation(mySprite5, assets.animation`
-                    myAnim0
-                    `, 200, true)
+            animation.runImageAnimation(
+            mySprite5,
+            assets.animation`myAnim0`,
+            200,
+            true
+            )
         } else if (cx == 2) {
             animation.stopAnimation(animation.AnimationTypes.All, mySprite5)
-            animation.runImageAnimation(mySprite5, assets.animation`
-                    myAnim1
-                    `, 200, true)
+            animation.runImageAnimation(
+            mySprite5,
+            assets.animation`myAnim1`,
+            200,
+            true
+            )
         } else {
             animation.stopAnimation(animation.AnimationTypes.All, mySprite5)
             mySprite5.setVelocity(0, 50)
             mySprite5.setImage(assets.image`myImage4`)
         }
-        
         pause(2000)
     } else {
         mySprite5.setVelocity(0, 50)
     }
-    
 })
-forever(function on_forever3() {
+forever(function () {
+    if (_10 == 0) {
+        mySprite2.setPosition(x1, y1)
+        grid.snap(mySprite2)
+    }
+})
+forever(function () {
     mySprite4.setStayInScreen(true)
     mySprite.setVelocity(x, y)
     mySprite4.setVelocity(-100, -100)
     if (info.score() == 1) {
-        mySprite4.setImage(assets.image`
-            myImage
-            `)
+        mySprite4.setImage(assets.image`myImage`)
     } else if (info.score() == 2) {
-        mySprite4.setImage(assets.image`
-            myImage1
-            `)
+        mySprite4.setImage(assets.image`myImage1`)
     } else if (info.score() == 4) {
-        mySprite4.setImage(assets.image`
-            myImage3
-            `)
+        mySprite4.setImage(assets.image`myImage3`)
     } else if (info.score() == 3) {
-        mySprite4.setImage(assets.image`
-            myImage0
-            `)
+        mySprite4.setImage(assets.image`myImage0`)
     } else if (info.score() == 5) {
-        mySprite4.setImage(assets.image`
-            myImage2
-            `)
+        mySprite4.setImage(assets.image`myImage2`)
     }
-    
 })
-forever(function on_forever4() {
-    if (cx == 2) {
-        if (mySprite5.isHittingTile(CollisionDirection.Left) || mySprite5.isHittingTile(CollisionDirection.Right)) {
-            mySprite5.y += -16
+forever(function () {
+    if (mySprite5.isHittingTile(CollisionDirection.Bottom)) {
+        if (cx == 2) {
+            if (mySprite5.isHittingTile(CollisionDirection.Left) || mySprite5.isHittingTile(CollisionDirection.Right)) {
+                mySprite5.setVelocity(-50, -50)
+                pause(300)
+                mySprite5.setVelocity(-50, 50)
+            } else {
+                mySprite5.setVelocity(-50, 50)
+            }
+        } else if ((mySprite5.isHittingTile(CollisionDirection.Left) || mySprite5.isHittingTile(CollisionDirection.Right)) && cx == 1) {
+            mySprite5.setVelocity(50, -50)
+            pause(300)
+            mySprite5.setVelocity(50, 50)
         } else {
-            mySprite5.setVelocity(-50, 50)
+            mySprite5.setVelocity(50, 50)
         }
-        
-    } else if (mySprite5.isHittingTile(CollisionDirection.Left) || mySprite5.isHittingTile(CollisionDirection.Right)) {
-        mySprite5.y += -16
-    } else {
-        mySprite5.setVelocity(50, 50)
+        if (cx == 3) {
+            mySprite5.setVelocity(0, 50)
+        }
     }
-    
 })
