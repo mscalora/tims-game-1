@@ -4,6 +4,9 @@ namespace SpriteKind {
     export const wall2 = SpriteKind.create()
     export const mod = SpriteKind.create()
 }
+/**
+ * test
+ */
 controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
     if (_10 == 1) {
         if (mySprite.isHittingTile(CollisionDirection.Bottom)) {
@@ -17,7 +20,7 @@ controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
 })
 controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
     if (_10 == 1) {
-        if (info.score() == 5) {
+        if (info.score() == 6) {
             info.setScore(1)
         } else if (info.score() == 1) {
             info.setScore(2)
@@ -27,6 +30,8 @@ controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
             info.setScore(4)
         } else if (info.score() == 4) {
             info.setScore(5)
+        } else if (info.score() == 5) {
+            info.setScore(6)
         }
     } else if (info.score() == 1) {
         tiles.setTileAt(tiles.getTileLocation(mySprite2.tilemapLocation().column, mySprite2.tilemapLocation().row), assets.tile`myTile3`)
@@ -283,10 +288,12 @@ let mySprite5 = sprites.create(assets.image`myImage4`, SpriteKind.mod)
 mySprite5.setPosition(125, 80)
 mySprite5.setVelocity(0, 50)
 mySprite5.setStayInScreen(false)
-tiles.placeOnRandomTile(mySprite, assets.tile`myTile7`)
-mySprite.y += -8
-tiles.placeOnRandomTile(mySprite5, assets.tile`myTile8`)
-mySprite4.y += -8
+forever(function () {
+    if (_10 == 0) {
+        mySprite2.setPosition(x1, y1)
+        grid.snap(mySprite2)
+    }
+})
 forever(function () {
     if (mySprite5.isHittingTile(CollisionDirection.Bottom)) {
         cx = randint(1, 3)
@@ -317,12 +324,6 @@ forever(function () {
     }
 })
 forever(function () {
-    if (_10 == 0) {
-        mySprite2.setPosition(x1, y1)
-        grid.snap(mySprite2)
-    }
-})
-forever(function () {
     mySprite4.setStayInScreen(true)
     mySprite.setVelocity(x, y)
     mySprite4.setVelocity(-100, -100)
@@ -336,27 +337,20 @@ forever(function () {
         mySprite4.setImage(assets.image`myImage0`)
     } else if (info.score() == 5) {
         mySprite4.setImage(assets.image`myImage2`)
+    } else if (info.score() == 6) {
+    	
     }
 })
 forever(function () {
-    if (mySprite5.isHittingTile(CollisionDirection.Bottom)) {
-        if (cx == 2) {
-            if (mySprite5.isHittingTile(CollisionDirection.Left) || mySprite5.isHittingTile(CollisionDirection.Right)) {
-                mySprite5.setVelocity(-50, -50)
-                pause(300)
-                mySprite5.setVelocity(-50, 50)
-            } else {
-                mySprite5.setVelocity(-50, 50)
-            }
-        } else if ((mySprite5.isHittingTile(CollisionDirection.Left) || mySprite5.isHittingTile(CollisionDirection.Right)) && cx == 1) {
-            mySprite5.setVelocity(50, -50)
-            pause(300)
-            mySprite5.setVelocity(50, 50)
+    if (cx == 2) {
+        if (mySprite5.isHittingTile(CollisionDirection.Left) || mySprite5.isHittingTile(CollisionDirection.Right)) {
+            mySprite5.y += -16
         } else {
-            mySprite5.setVelocity(50, 50)
+            mySprite5.setVelocity(-50, 50)
         }
-        if (cx == 3) {
-            mySprite5.setVelocity(0, 50)
-        }
+    } else if (mySprite5.isHittingTile(CollisionDirection.Left) || mySprite5.isHittingTile(CollisionDirection.Right)) {
+        mySprite5.y += -16
+    } else {
+        mySprite5.setVelocity(50, 50)
     }
 })
