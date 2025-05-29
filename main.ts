@@ -117,7 +117,21 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
         } else {
             if (_10 == 1) {
                 if (tiles.tileAtLocationEquals(tiles.getTileLocation(mySprite6.tilemapLocation().column, mySprite6.tilemapLocation().row), assets.tile`myTile9`)) {
+                    tiles.setTileAt(tiles.getTileLocation(mySprite6.tilemapLocation().column, mySprite6.tilemapLocation().row - 1), assets.tile`myTile12`)
+                    tiles.setWallAt(tiles.getTileLocation(mySprite6.tilemapLocation().column, mySprite6.tilemapLocation().row - 1), true)
                     tiles.setTileAt(tiles.getTileLocation(mySprite6.tilemapLocation().column, mySprite6.tilemapLocation().row), assets.tile`myTile12`)
+                    tiles.setWallAt(tiles.getTileLocation(mySprite6.tilemapLocation().column, mySprite6.tilemapLocation().row), true)
+                }
+                if (tiles.tileAtLocationEquals(tiles.getTileLocation(mySprite6.tilemapLocation().column - 1, mySprite6.tilemapLocation().row), assets.tile`myTile12`)) {
+                    tiles.setTileAt(tiles.getTileLocation(mySprite6.tilemapLocation().column - 1, mySprite6.tilemapLocation().row - 1), assets.tile`myTile10`)
+                    tiles.setWallAt(tiles.getTileLocation(mySprite6.tilemapLocation().column - 1, mySprite6.tilemapLocation().row - 1), false)
+                    tiles.setTileAt(tiles.getTileLocation(mySprite6.tilemapLocation().column - 1, mySprite6.tilemapLocation().row), assets.tile`myTile9`)
+                    tiles.setWallAt(tiles.getTileLocation(mySprite6.tilemapLocation().column - 1, mySprite6.tilemapLocation().row), false)
+                } else if (tiles.tileAtLocationEquals(tiles.getTileLocation(mySprite6.tilemapLocation().column + 1, mySprite6.tilemapLocation().row), assets.tile`myTile12`)) {
+                    tiles.setTileAt(tiles.getTileLocation(mySprite6.tilemapLocation().column + 1, mySprite6.tilemapLocation().row - 1), assets.tile`myTile10`)
+                    tiles.setWallAt(tiles.getTileLocation(mySprite6.tilemapLocation().column + 1, mySprite6.tilemapLocation().row - 1), false)
+                    tiles.setTileAt(tiles.getTileLocation(mySprite6.tilemapLocation().column + 1, mySprite6.tilemapLocation().row), assets.tile`myTile9`)
+                    tiles.setWallAt(tiles.getTileLocation(mySprite6.tilemapLocation().column + 1, mySprite6.tilemapLocation().row), false)
                 }
             } else {
                 row = 0
@@ -345,9 +359,9 @@ function start () {
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
-        . . . . . . 9 9 9 9 . . . . . . 
-        . . . . . . 9 9 9 9 . . . . . . 
-        . . . . . . 9 9 9 9 . . . . . . 
+        . . . . . . 8 8 8 8 . . . . . . 
+        . . . . . . 8 8 8 8 . . . . . . 
+        . . . . . . 8 8 8 8 . . . . . . 
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
@@ -500,37 +514,6 @@ game.splash("Welcome to Minecrap", "press A to play")
 start()
 forever(function () {
     if (start2 == 1) {
-        if (mySprite5.isHittingTile(CollisionDirection.Bottom)) {
-            cx = randint(1, 3)
-            if (cx == 1) {
-                animation.stopAnimation(animation.AnimationTypes.All, mySprite5)
-                animation.runImageAnimation(
-                mySprite5,
-                assets.animation`myAnim0`,
-                200,
-                true
-                )
-            } else if (cx == 2) {
-                animation.stopAnimation(animation.AnimationTypes.All, mySprite5)
-                animation.runImageAnimation(
-                mySprite5,
-                assets.animation`myAnim1`,
-                200,
-                true
-                )
-            } else {
-                animation.stopAnimation(animation.AnimationTypes.All, mySprite5)
-                mySprite5.setVelocity(0, 50)
-                mySprite5.setImage(assets.image`myImage4`)
-            }
-            pause(2000)
-        } else {
-            mySprite5.setVelocity(0, 50)
-        }
-    }
-})
-forever(function () {
-    if (start2 == 1) {
         if (_10 == 0) {
             mySprite2.setPosition(x1, y1)
             grid.snap(mySprite2)
@@ -583,6 +566,37 @@ forever(function () {
 })
 forever(function () {
     if (start2 == 1) {
-        mySprite6.setPosition(mySprite.x, mySprite.x + 8)
+        mySprite6.setPosition(mySprite.x, mySprite.y + 8)
+    }
+})
+forever(function () {
+    if (start2 == 1) {
+        if (mySprite5.isHittingTile(CollisionDirection.Bottom)) {
+            cx = randint(1, 3)
+            if (cx == 1) {
+                animation.stopAnimation(animation.AnimationTypes.All, mySprite5)
+                animation.runImageAnimation(
+                mySprite5,
+                assets.animation`myAnim0`,
+                200,
+                true
+                )
+            } else if (cx == 2) {
+                animation.stopAnimation(animation.AnimationTypes.All, mySprite5)
+                animation.runImageAnimation(
+                mySprite5,
+                assets.animation`myAnim1`,
+                200,
+                true
+                )
+            } else {
+                animation.stopAnimation(animation.AnimationTypes.All, mySprite5)
+                mySprite5.setVelocity(0, 50)
+                mySprite5.setImage(assets.image`myImage4`)
+            }
+            pause(2000)
+        } else {
+            mySprite5.setVelocity(0, 50)
+        }
     }
 })
