@@ -48,21 +48,42 @@ controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
     } else {
         if (_10 == 1) {
         	
-        } else if (info.score() == 1) {
-            tiles.setTileAt(tiles.getTileLocation(mySprite2.tilemapLocation().column, mySprite2.tilemapLocation().row), assets.tile`myTile3`)
-            tiles.setWallAt(tiles.getTileLocation(mySprite2.tilemapLocation().column, mySprite2.tilemapLocation().row), true)
-        } else if (info.score() == 2) {
-            tiles.setTileAt(tiles.getTileLocation(mySprite2.tilemapLocation().column, mySprite2.tilemapLocation().row), assets.tile`myTile6`)
-            tiles.setWallAt(tiles.getTileLocation(mySprite2.tilemapLocation().column, mySprite2.tilemapLocation().row), true)
-        } else if (info.score() == 4) {
-            tiles.setTileAt(tiles.getTileLocation(mySprite2.tilemapLocation().column, mySprite2.tilemapLocation().row), assets.tile`myTile9`)
-            tiles.setTileAt(tiles.getTileLocation(mySprite2.tilemapLocation().column, mySprite2.tilemapLocation().row - 1), assets.tile`myTile6`)
-        } else if (info.score() == 3) {
-            tiles.setTileAt(tiles.getTileLocation(mySprite2.tilemapLocation().column, mySprite2.tilemapLocation().row), assets.tile`Planks`)
-            tiles.setWallAt(tiles.getTileLocation(mySprite2.tilemapLocation().column, mySprite2.tilemapLocation().row), true)
-        } else if (info.score() == 5) {
-            tiles.setTileAt(tiles.getTileLocation(mySprite2.tilemapLocation().column, mySprite2.tilemapLocation().row), assets.tile`Bedrock`)
-            tiles.setWallAt(tiles.getTileLocation(mySprite2.tilemapLocation().column, mySprite2.tilemapLocation().row), true)
+        } else {
+            if (tiles.tileAtLocationEquals(tiles.getTileLocation(mySprite2.tilemapLocation().column, mySprite2.tilemapLocation().row), assets.tile`myTile0`)) {
+                if (_10 == 1) {
+                	
+                } else if (info.score() == 1) {
+                    tiles.setTileAt(tiles.getTileLocation(mySprite2.tilemapLocation().column, mySprite2.tilemapLocation().row), assets.tile`myTile3`)
+                    tiles.setWallAt(tiles.getTileLocation(mySprite2.tilemapLocation().column, mySprite2.tilemapLocation().row), true)
+                } else if (info.score() == 2) {
+                    if (!(tiles.tileAtLocationEquals(tiles.getTileLocation(mySprite2.tilemapLocation().column, mySprite2.tilemapLocation().row - 1), assets.tile`myTile0`))) {
+                        tiles.setTileAt(tiles.getTileLocation(mySprite2.tilemapLocation().column, mySprite2.tilemapLocation().row), assets.tile`myTile6`)
+                        tiles.setWallAt(tiles.getTileLocation(mySprite2.tilemapLocation().column, mySprite2.tilemapLocation().row), true)
+                    } else {
+                        tiles.setTileAt(tiles.getTileLocation(mySprite2.tilemapLocation().column, mySprite2.tilemapLocation().row), assets.tile`myTile3`)
+                        tiles.setWallAt(tiles.getTileLocation(mySprite2.tilemapLocation().column, mySprite2.tilemapLocation().row), true)
+                    }
+                } else if (info.score() == 4) {
+                    if (tiles.tileAtLocationEquals(tiles.getTileLocation(mySprite2.tilemapLocation().column, mySprite2.tilemapLocation().row - 1), assets.tile`myTile0`)) {
+                        tiles.setTileAt(tiles.getTileLocation(mySprite2.tilemapLocation().column, mySprite2.tilemapLocation().row), assets.tile`myTile9`)
+                        tiles.setTileAt(tiles.getTileLocation(mySprite2.tilemapLocation().column, mySprite2.tilemapLocation().row - 1), assets.tile`myTile10`)
+                    }
+                } else if (info.score() == 3) {
+                    tiles.setTileAt(tiles.getTileLocation(mySprite2.tilemapLocation().column, mySprite2.tilemapLocation().row), assets.tile`Planks`)
+                    tiles.setWallAt(tiles.getTileLocation(mySprite2.tilemapLocation().column, mySprite2.tilemapLocation().row), true)
+                } else if (info.score() == 5) {
+                    tiles.setTileAt(tiles.getTileLocation(mySprite2.tilemapLocation().column, mySprite2.tilemapLocation().row), assets.tile`Bedrock`)
+                    tiles.setWallAt(tiles.getTileLocation(mySprite2.tilemapLocation().column, mySprite2.tilemapLocation().row), true)
+                } else if (info.score() == 6) {
+                    tiles.setTileAt(tiles.getTileLocation(mySprite2.tilemapLocation().column, mySprite2.tilemapLocation().row), assets.tile`Planks`)
+                }
+                if (tiles.tileAtLocationEquals(tiles.getTileLocation(mySprite2.tilemapLocation().column, mySprite2.tilemapLocation().row + 1), assets.tile`myTile3`)) {
+                    if (tiles.tileAtLocationEquals(tiles.getTileLocation(mySprite2.tilemapLocation().column, mySprite2.tilemapLocation().row + 1), assets.tile`myTile3`)) {
+                        tiles.setTileAt(tiles.getTileLocation(mySprite2.tilemapLocation().column, mySprite2.tilemapLocation().row + 1), assets.tile`myTile6`)
+                        tiles.setWallAt(tiles.getTileLocation(mySprite2.tilemapLocation().column, mySprite2.tilemapLocation().row + 1), true)
+                    }
+                }
+            }
         }
     }
 })
@@ -86,6 +107,12 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
             row = 0
             tiles.setWallAt(tiles.getTileLocation(mySprite2.tilemapLocation().column, mySprite2.tilemapLocation().row), false)
             tiles.setTileAt(tiles.getTileLocation(mySprite2.tilemapLocation().column, mySprite2.tilemapLocation().row), assets.tile`myTile0`)
+            if (tiles.tileAtLocationEquals(tiles.getTileLocation(mySprite2.tilemapLocation().column, mySprite2.tilemapLocation().row), assets.tile`myTile0`)) {
+                if (tiles.tileAtLocationEquals(tiles.getTileLocation(mySprite2.tilemapLocation().column, mySprite2.tilemapLocation().row + 1), assets.tile`myTile6`)) {
+                    tiles.setTileAt(tiles.getTileLocation(mySprite2.tilemapLocation().column, mySprite2.tilemapLocation().row + 1), assets.tile`myTile3`)
+                    tiles.setWallAt(tiles.getTileLocation(mySprite2.tilemapLocation().column, mySprite2.tilemapLocation().row + 1), true)
+                }
+            }
             if (mySprite2.overlapsWith(mySprite3)) {
                 sprites.destroy(mySprite3)
                 sprites.destroyAllSpritesOfKind(SpriteKind.wall2)
