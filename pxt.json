@@ -3,7 +3,9 @@
     "description": "",
     "dependencies": {
         "device": "*",
-        "Sprite Grid": "github:microsoft/arcade-grid#v1.3.0"
+        "Sprite Grid": "github:microsoft/arcade-grid#v1.3.0",
+        "arcade-background-scroll": "github:microsoft/arcade-background-scroll#v0.1.2",
+        "settings-blocks": "github:microsoft/pxt-settings-blocks#v1.0.0"
     },
     "files": [
         "main.blocks",

@@ -56,10 +56,10 @@ controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
                 if (tiles.tileAtLocationEquals(tiles.getTileLocation(mySprite2.tilemapLocation().column, mySprite2.tilemapLocation().row), assets.tile`myTile0`)) {
                     if (_10 == 1) {
                     	
-                    } else if (info.score() == 1) {
+                    } else if (block_data == 1) {
                         tiles.setTileAt(tiles.getTileLocation(mySprite2.tilemapLocation().column, mySprite2.tilemapLocation().row), assets.tile`myTile3`)
                         tiles.setWallAt(tiles.getTileLocation(mySprite2.tilemapLocation().column, mySprite2.tilemapLocation().row), true)
-                    } else if (info.score() == 2) {
+                    } else if (block_data == 2) {
                         if (!(tiles.tileAtLocationEquals(tiles.getTileLocation(mySprite2.tilemapLocation().column, mySprite2.tilemapLocation().row - 1), assets.tile`myTile0`))) {
                             tiles.setTileAt(tiles.getTileLocation(mySprite2.tilemapLocation().column, mySprite2.tilemapLocation().row), assets.tile`myTile6`)
                             tiles.setWallAt(tiles.getTileLocation(mySprite2.tilemapLocation().column, mySprite2.tilemapLocation().row), true)
@@ -67,18 +67,18 @@ controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
                             tiles.setTileAt(tiles.getTileLocation(mySprite2.tilemapLocation().column, mySprite2.tilemapLocation().row), assets.tile`myTile3`)
                             tiles.setWallAt(tiles.getTileLocation(mySprite2.tilemapLocation().column, mySprite2.tilemapLocation().row), true)
                         }
-                    } else if (info.score() == 4) {
+                    } else if (block_data == 4) {
                         if (tiles.tileAtLocationEquals(tiles.getTileLocation(mySprite2.tilemapLocation().column, mySprite2.tilemapLocation().row - 1), assets.tile`myTile0`)) {
                             tiles.setTileAt(tiles.getTileLocation(mySprite2.tilemapLocation().column, mySprite2.tilemapLocation().row), assets.tile`myTile9`)
                             tiles.setTileAt(tiles.getTileLocation(mySprite2.tilemapLocation().column, mySprite2.tilemapLocation().row - 1), assets.tile`myTile10`)
                         }
-                    } else if (info.score() == 3) {
+                    } else if (block_data == 3) {
                         tiles.setTileAt(tiles.getTileLocation(mySprite2.tilemapLocation().column, mySprite2.tilemapLocation().row), assets.tile`Planks`)
                         tiles.setWallAt(tiles.getTileLocation(mySprite2.tilemapLocation().column, mySprite2.tilemapLocation().row), true)
-                    } else if (info.score() == 5) {
+                    } else if (block_data == 5) {
                         tiles.setTileAt(tiles.getTileLocation(mySprite2.tilemapLocation().column, mySprite2.tilemapLocation().row), assets.tile`Bedrock`)
                         tiles.setWallAt(tiles.getTileLocation(mySprite2.tilemapLocation().column, mySprite2.tilemapLocation().row), true)
-                    } else if (info.score() == 6) {
+                    } else if (block_data == 6) {
                         tiles.setTileAt(tiles.getTileLocation(mySprite2.tilemapLocation().column, mySprite2.tilemapLocation().row), assets.tile`myTile11`)
                     }
                     if (tiles.tileAtLocationEquals(tiles.getTileLocation(mySprite2.tilemapLocation().column, mySprite2.tilemapLocation().row + 1), assets.tile`myTile3`)) {
@@ -101,18 +101,18 @@ controller.anyButton.onEvent(ControllerButtonEvent.Pressed, function () {
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     if (start2 == 1) {
         if (controller.down.isPressed()) {
-            if (info.score() == 6) {
-                info.setScore(1)
-            } else if (info.score() == 1) {
-                info.setScore(2)
-            } else if (info.score() == 2) {
-                info.setScore(3)
-            } else if (info.score() == 3) {
-                info.setScore(4)
-            } else if (info.score() == 4) {
-                info.setScore(5)
-            } else if (info.score() == 5) {
-                info.setScore(6)
+            if (block_data == 6) {
+                block_data = 1
+            } else if (block_data == 1) {
+                block_data = 2
+            } else if (block_data == 2) {
+                block_data = 3
+            } else if (block_data == 3) {
+                block_data = 4
+            } else if (block_data == 4) {
+                block_data = 5
+            } else if (block_data == 5) {
+                block_data = 6
             }
         } else {
             if (_10 == 1) {
@@ -163,6 +163,54 @@ controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
         }
     }
 })
+function save () {
+    if (start2 == 1) {
+        let list: Image[] = []
+        list.reverse()
+        tiles.setTileAt(tiles.getTileLocation(mySprite6.tilemapLocation().column, mySprite6.tilemapLocation().row), assets.tile`myTile7`)
+        tiles.setTileAt(tiles.getTileLocation(mySprite5.tilemapLocation().column, mySprite5.tilemapLocation().row), assets.tile`myTile8`)
+        r1 = 0
+        c1 = 0
+        for (let index = 0; index < 512; index++) {
+            if (tiles.tileAtLocationEquals(tiles.getTileLocation(c1, c1), assets.tile`myTile0`)) {
+                list.push(assets.tile`myTile0`)
+            }
+            if (tiles.tileAtLocationEquals(tiles.getTileLocation(c1, c1), assets.tile`myTile5`)) {
+                list.push(assets.tile`myTile5`)
+            }
+            if (tiles.tileAtLocationEquals(tiles.getTileLocation(c1, c1), assets.tile`myTile3`)) {
+                list.push(assets.tile`myTile3`)
+            }
+            if (tiles.tileAtLocationEquals(tiles.getTileLocation(c1, c1), assets.tile`myTile6`)) {
+                list.push(assets.tile`myTile6`)
+            }
+            if (tiles.tileAtLocationEquals(tiles.getTileLocation(c1, c1), assets.tile`Planks`)) {
+                list.push(assets.tile`Planks`)
+            }
+            if (tiles.tileAtLocationEquals(tiles.getTileLocation(c1, c1), assets.tile`myTile9`)) {
+                list.push(assets.tile`myTile9`)
+            }
+            if (tiles.tileAtLocationEquals(tiles.getTileLocation(c1, c1), assets.tile`myTile10`)) {
+                list.push(assets.tile`myTile10`)
+            }
+            if (tiles.tileAtLocationEquals(tiles.getTileLocation(c1, c1), assets.tile`myTile12`)) {
+                list.push(assets.tile`myTile12`)
+            }
+            if (tiles.tileAtLocationEquals(tiles.getTileLocation(c1, c1), assets.tile`myTile11`)) {
+                list.push(assets.tile`myTile11`)
+            }
+            if (tiles.tileAtLocationEquals(tiles.getTileLocation(c1, c1), assets.tile`myTile4`)) {
+                list.push(assets.tile`myTile4`)
+            }
+            if (tiles.tileAtLocationEquals(tiles.getTileLocation(c1, c1), assets.tile`myTile7`)) {
+                list.push(assets.tile`myTile7`)
+            }
+            if (tiles.tileAtLocationEquals(tiles.getTileLocation(c1, c1), assets.tile`myTile8`)) {
+                list.push(assets.tile`myTile8`)
+            }
+        }
+    }
+}
 controller.right.onEvent(ControllerButtonEvent.Released, function () {
     if (start2 == 1) {
         x = 0
@@ -193,6 +241,24 @@ controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
 })
 function start () {
     mySprite = sprites.create(assets.image`Steve`, SpriteKind.Player)
+    mySprite6 = sprites.create(img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . 8 8 8 8 . . . . . . 
+        . . . . . . 8 8 8 8 . . . . . . 
+        . . . . . . 8 8 8 8 . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        `, SpriteKind.hitbox)
     scene.setBackgroundImage(img`
         9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999
         9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999
@@ -322,7 +388,7 @@ function start () {
     mySprite4.setVelocity(100, 100)
     y = 100
     _10 = 1
-    info.setScore(1)
+    block_data = 1
     mySprite3 = sprites.create(img`
         a a a a a a a a f f f f f f f f 
         a a a a a a a a f f f f f f f f 
@@ -352,35 +418,24 @@ function start () {
     tiles.placeOnRandomTile(mySprite5, assets.tile`myTile8`)
     tiles.setTileAt(tiles.getTileLocation(mySprite5.tilemapLocation().column, mySprite5.tilemapLocation().row), assets.tile`myTile0`)
     mySprite4.y += -8
-    mySprite6 = sprites.create(img`
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . 8 8 8 8 . . . . . . 
-        . . . . . . 8 8 8 8 . . . . . . 
-        . . . . . . 8 8 8 8 . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        `, SpriteKind.hitbox)
     clicks = 0
     start2 = 1
 }
+let DN = 0
+let c = 0
+let r = 0
+let timer = 0
 let cx = 0
-let mySprite5: Sprite = null
 let mySprite4: Sprite = null
+let c1 = 0
+let r1 = 0
+let mySprite5: Sprite = null
 let x = 0
 let mySprite3: Sprite = null
 let row = 0
 let mySprite6: Sprite = null
 let clicks = 0
+let block_data = 0
 let x1 = 0
 let mySprite2: Sprite = null
 let y1 = 0
@@ -522,17 +577,17 @@ forever(function () {
 })
 forever(function () {
     if (start2 == 1) {
-        if (info.score() == 1) {
+        if (block_data == 1) {
             mySprite4.setImage(assets.image`myImage`)
-        } else if (info.score() == 2) {
+        } else if (block_data == 2) {
             mySprite4.setImage(assets.image`myImage1`)
-        } else if (info.score() == 4) {
+        } else if (block_data == 4) {
             mySprite4.setImage(assets.image`myImage3`)
-        } else if (info.score() == 3) {
+        } else if (block_data == 3) {
             mySprite4.setImage(assets.image`myImage0`)
-        } else if (info.score() == 5) {
+        } else if (block_data == 5) {
             mySprite4.setImage(assets.image`myImage2`)
-        } else if (info.score() == 6) {
+        } else if (block_data == 6) {
             mySprite4.setImage(assets.image`myImage5`)
         }
         mySprite4.setStayInScreen(true)
@@ -598,5 +653,37 @@ forever(function () {
         } else {
             mySprite5.setVelocity(0, 50)
         }
+    }
+})
+forever(function () {
+    if (start2 == 1) {
+        timer += 1
+        if (timer == 60) {
+            timer = 0
+            r = 0
+            c = 0
+            for (let index = 0; index < 512; index++) {
+                c += 1
+                if (c == 32) {
+                    r += 1
+                    c = 0
+                }
+                if (tiles.tileAtLocationEquals(tiles.getTileLocation(c, r), assets.tile`myTile0`)) {
+                    tiles.setTileAt(tiles.getTileLocation(c, r), assets.tile`myTile5`)
+                    DN = 0
+                } else if (tiles.tileAtLocationEquals(tiles.getTileLocation(c, r), assets.tile`myTile5`)) {
+                    tiles.setTileAt(tiles.getTileLocation(c, r), assets.tile`myTile0`)
+                    DN = 1
+                }
+            }
+            if (DN == 1) {
+                game.setDialogTextColor(5)
+                game.showLongText("Day", DialogLayout.Bottom)
+            } else {
+                game.setDialogTextColor(1)
+                game.showLongText("Night", DialogLayout.Bottom)
+            }
+        }
+        pause(1000)
     }
 })
