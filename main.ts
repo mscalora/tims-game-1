@@ -75,7 +75,7 @@ controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
                     tiles.setTileAt(tiles.getTileLocation(mySprite2.tilemapLocation().column, mySprite2.tilemapLocation().row), assets.tile`Bedrock`)
                     tiles.setWallAt(tiles.getTileLocation(mySprite2.tilemapLocation().column, mySprite2.tilemapLocation().row), true)
                 } else if (info.score() == 6) {
-                    tiles.setTileAt(tiles.getTileLocation(mySprite2.tilemapLocation().column, mySprite2.tilemapLocation().row), assets.tile`Planks`)
+                    tiles.setTileAt(tiles.getTileLocation(mySprite2.tilemapLocation().column, mySprite2.tilemapLocation().row), assets.tile`myTile11`)
                 }
                 if (tiles.tileAtLocationEquals(tiles.getTileLocation(mySprite2.tilemapLocation().column, mySprite2.tilemapLocation().row + 1), assets.tile`myTile3`)) {
                     if (tiles.tileAtLocationEquals(tiles.getTileLocation(mySprite2.tilemapLocation().column, mySprite2.tilemapLocation().row + 1), assets.tile`myTile3`)) {
@@ -89,7 +89,7 @@ controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
 })
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     if (controller.down.isPressed()) {
-        if (info.score() == 5) {
+        if (info.score() == 6) {
             info.setScore(1)
         } else if (info.score() == 1) {
             info.setScore(2)
@@ -99,6 +99,8 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
             info.setScore(4)
         } else if (info.score() == 4) {
             info.setScore(5)
+        } else if (info.score() == 5) {
+            info.setScore(6)
         }
     } else {
         if (_10 == 1) {
@@ -369,6 +371,8 @@ forever(function () {
         mySprite4.setImage(assets.image`myImage0`)
     } else if (info.score() == 5) {
         mySprite4.setImage(assets.image`myImage2`)
+    } else if (info.score() == 6) {
+        mySprite4.setImage(assets.image`myImage5`)
     }
 })
 forever(function () {

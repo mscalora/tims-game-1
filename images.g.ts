@@ -187,6 +187,25 @@ eeeeeeeeeeeeeeee
 1 e e e c e e e e e e e e e e 1 
 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
 `;
+            case "image9":
+            case "myImage5":return img`
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 e e e e e 4 4 4 4 e e e e e 1 
+1 e e e e e e 4 4 e e e e e e 1 
+1 e e e e e e 4 4 e e e e e e 1 
+1 e e e e e e 4 4 e e f f f e 1 
+1 e e 4 e e e 4 4 e e f e f e 1 
+1 e e 4 e e e 4 4 e e f f f e 1 
+1 e e 4 e e e 4 4 e e d d d e 1 
+1 e d d d e e 4 4 e e d d d e 1 
+1 e d d d e e 4 4 e e e d d e 1 
+1 e e e e e e 4 4 e e e d d e 1 
+1 e e e e e e 4 4 e e e e d e 1 
+1 e e e e e e 4 4 e e e e d e 1 
+1 e e e e e e 4 4 e e e e d e 1 
+1 e e e e e e 4 4 e e e e e e 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+`;
         }
         return null;
     })
