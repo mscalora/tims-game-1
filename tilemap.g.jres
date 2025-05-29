@@ -76,6 +76,12 @@
         "tilemapTile": true,
         "displayName": "myTile8"
     },
+    "tile13": {
+        "data": "hwQQABAAAADu7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7uXu7u7u7u7u5e7u7u7u7u7l7u7u7u7u7uXuXu7u7u7g==",
+        "mimeType": "image/x-mkcd-f4",
+        "tilemapTile": true,
+        "displayName": "myTile9"
+    },
     "level1": {
         "id": "level1",
         "mimeType": "application/mkcd-tilemap",

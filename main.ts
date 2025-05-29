@@ -16,7 +16,58 @@ controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
     }
 })
 controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
-    if (_10 == 1) {
+    if (controller.down.isPressed()) {
+        if (_10 == 1) {
+            mySprite2 = sprites.create(img`
+                f f f f f f f f f f f f f f f f 
+                f . . . . . . . . . . . . . . f 
+                f . . . . . . . . . . . . . . f 
+                f . . . . . . . . . . . . . . f 
+                f . . . . . . . . . . . . . . f 
+                f . . . . . . . . . . . . . . f 
+                f . . . . . . . . . . . . . . f 
+                f . . . . . . . . . . . . . . f 
+                f . . . . . . . . . . . . . . f 
+                f . . . . . . . . . . . . . . f 
+                f . . . . . . . . . . . . . . f 
+                f . . . . . . . . . . . . . . f 
+                f . . . . . . . . . . . . . . f 
+                f . . . . . . . . . . . . . . f 
+                f . . . . . . . . . . . . . . f 
+                f f f f f f f f f f f f f f f f 
+                `, SpriteKind.crser)
+            mySprite2.setPosition(mySprite.x, mySprite.y - 8)
+            mySprite2.setStayInScreen(true)
+            y1 = mySprite.y - 8
+            x1 = mySprite.x
+            _10 = 0
+        } else {
+            sprites.destroy(mySprite2)
+            _10 = 1
+        }
+    } else {
+        if (_10 == 1) {
+        	
+        } else if (info.score() == 1) {
+            tiles.setTileAt(tiles.getTileLocation(mySprite2.tilemapLocation().column, mySprite2.tilemapLocation().row), assets.tile`myTile3`)
+            tiles.setWallAt(tiles.getTileLocation(mySprite2.tilemapLocation().column, mySprite2.tilemapLocation().row), true)
+        } else if (info.score() == 2) {
+            tiles.setTileAt(tiles.getTileLocation(mySprite2.tilemapLocation().column, mySprite2.tilemapLocation().row), assets.tile`myTile6`)
+            tiles.setWallAt(tiles.getTileLocation(mySprite2.tilemapLocation().column, mySprite2.tilemapLocation().row), true)
+        } else if (info.score() == 4) {
+            tiles.setTileAt(tiles.getTileLocation(mySprite2.tilemapLocation().column, mySprite2.tilemapLocation().row), assets.tile`myTile9`)
+            tiles.setTileAt(tiles.getTileLocation(mySprite2.tilemapLocation().column, mySprite2.tilemapLocation().row - 1), assets.tile`myTile6`)
+        } else if (info.score() == 3) {
+            tiles.setTileAt(tiles.getTileLocation(mySprite2.tilemapLocation().column, mySprite2.tilemapLocation().row), assets.tile`Planks`)
+            tiles.setWallAt(tiles.getTileLocation(mySprite2.tilemapLocation().column, mySprite2.tilemapLocation().row), true)
+        } else if (info.score() == 5) {
+            tiles.setTileAt(tiles.getTileLocation(mySprite2.tilemapLocation().column, mySprite2.tilemapLocation().row), assets.tile`Bedrock`)
+            tiles.setWallAt(tiles.getTileLocation(mySprite2.tilemapLocation().column, mySprite2.tilemapLocation().row), true)
+        }
+    }
+})
+controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
+    if (controller.down.isPressed()) {
         if (info.score() == 5) {
             info.setScore(1)
         } else if (info.score() == 1) {
@@ -28,38 +79,21 @@ controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
         } else if (info.score() == 4) {
             info.setScore(5)
         }
-    } else if (info.score() == 1) {
-        tiles.setTileAt(tiles.getTileLocation(mySprite2.tilemapLocation().column, mySprite2.tilemapLocation().row), assets.tile`myTile3`)
-        tiles.setWallAt(tiles.getTileLocation(mySprite2.tilemapLocation().column, mySprite2.tilemapLocation().row), true)
-    } else if (info.score() == 2) {
-        tiles.setTileAt(tiles.getTileLocation(mySprite2.tilemapLocation().column, mySprite2.tilemapLocation().row), assets.tile`myTile6`)
-        tiles.setWallAt(tiles.getTileLocation(mySprite2.tilemapLocation().column, mySprite2.tilemapLocation().row), true)
-    } else if (info.score() == 4) {
-        mySprite3 = sprites.create(assets.image`Door`, SpriteKind.wall2)
-        mySprite3.setStayInScreen(false)
-        mySprite3.setPosition(mySprite2.x, mySprite2.y - 8)
-    } else if (info.score() == 3) {
-        tiles.setTileAt(tiles.getTileLocation(mySprite2.tilemapLocation().column, mySprite2.tilemapLocation().row), assets.tile`Planks`)
-        tiles.setWallAt(tiles.getTileLocation(mySprite2.tilemapLocation().column, mySprite2.tilemapLocation().row), true)
-    } else if (info.score() == 5) {
-        tiles.setTileAt(tiles.getTileLocation(mySprite2.tilemapLocation().column, mySprite2.tilemapLocation().row), assets.tile`Bedrock`)
-        tiles.setWallAt(tiles.getTileLocation(mySprite2.tilemapLocation().column, mySprite2.tilemapLocation().row), true)
-    }
-})
-controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
-    if (_10 == 1) {
-    	
     } else {
-        row = 0
-        tiles.setWallAt(tiles.getTileLocation(mySprite2.tilemapLocation().column, mySprite2.tilemapLocation().row), false)
-        tiles.setTileAt(tiles.getTileLocation(mySprite2.tilemapLocation().column, mySprite2.tilemapLocation().row), assets.tile`myTile0`)
-        if (mySprite2.overlapsWith(mySprite3)) {
-            sprites.destroy(mySprite3)
-            sprites.destroyAllSpritesOfKind(SpriteKind.wall2)
+        if (_10 == 1) {
+        	
+        } else {
+            row = 0
+            tiles.setWallAt(tiles.getTileLocation(mySprite2.tilemapLocation().column, mySprite2.tilemapLocation().row), false)
+            tiles.setTileAt(tiles.getTileLocation(mySprite2.tilemapLocation().column, mySprite2.tilemapLocation().row), assets.tile`myTile0`)
+            if (mySprite2.overlapsWith(mySprite3)) {
+                sprites.destroy(mySprite3)
+                sprites.destroyAllSpritesOfKind(SpriteKind.wall2)
+            }
+            mySprite2.startEffect(effects.confetti)
+            pause(500)
+            effects.clearParticles(mySprite2)
         }
-        mySprite2.startEffect(effects.confetti)
-        pause(500)
-        effects.clearParticles(mySprite2)
     }
 })
 controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
@@ -89,40 +123,10 @@ controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
         y1 += 16
     }
 })
-controller.menu.onEvent(ControllerButtonEvent.Pressed, function () {
-    if (_10 == 1) {
-        mySprite2 = sprites.create(img`
-            f f f f f f f f f f f f f f f f 
-            f . . . . . . . . . . . . . . f 
-            f . . . . . . . . . . . . . . f 
-            f . . . . . . . . . . . . . . f 
-            f . . . . . . . . . . . . . . f 
-            f . . . . . . . . . . . . . . f 
-            f . . . . . . . . . . . . . . f 
-            f . . . . . . . . . . . . . . f 
-            f . . . . . . . . . . . . . . f 
-            f . . . . . . . . . . . . . . f 
-            f . . . . . . . . . . . . . . f 
-            f . . . . . . . . . . . . . . f 
-            f . . . . . . . . . . . . . . f 
-            f . . . . . . . . . . . . . . f 
-            f . . . . . . . . . . . . . . f 
-            f f f f f f f f f f f f f f f f 
-            `, SpriteKind.crser)
-        mySprite2.setPosition(mySprite.x, mySprite.y - 8)
-        mySprite2.setStayInScreen(true)
-        y1 = mySprite.y - 8
-        x1 = mySprite.x
-        _10 = 0
-    } else {
-        sprites.destroy(mySprite2)
-        _10 = 1
-    }
-})
 let cx = 0
-let x1 = 0
 let x = 0
 let row = 0
+let x1 = 0
 let mySprite2: Sprite = null
 let y1 = 0
 let mySprite3: Sprite = null
@@ -284,8 +288,10 @@ mySprite5.setPosition(125, 80)
 mySprite5.setVelocity(0, 50)
 mySprite5.setStayInScreen(false)
 tiles.placeOnRandomTile(mySprite, assets.tile`myTile7`)
+tiles.setTileAt(tiles.getTileLocation(mySprite.tilemapLocation().column, mySprite.tilemapLocation().row), assets.tile`myTile0`)
 mySprite.y += -8
 tiles.placeOnRandomTile(mySprite5, assets.tile`myTile8`)
+tiles.setTileAt(tiles.getTileLocation(mySprite5.tilemapLocation().column, mySprite5.tilemapLocation().row), assets.tile`myTile0`)
 mySprite4.y += -8
 forever(function () {
     if (mySprite5.isHittingTile(CollisionDirection.Bottom)) {
